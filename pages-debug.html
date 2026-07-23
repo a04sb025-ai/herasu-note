@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>へらすノート Pages確認</title>
+    <style>
+      body { margin: 0; padding: 24px; background: #f7fbf7; color: #17231f; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', sans-serif; }
+      main { max-width: 680px; margin: 0 auto; }
+      h1 { color: #146c58; }
+      .card { background: white; border: 1px solid #d8ece4; border-radius: 18px; box-shadow: 0 12px 28px rgba(31, 138, 112, .12); margin: 16px 0; padding: 18px; }
+      code { background: #e7f7f1; border-radius: 6px; padding: 2px 6px; }
+      li { margin: 10px 0; }
+      .ok { color: #146c58; font-weight: 800; }
+      .ng { color: #b34318; font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>へらすノート Pages確認</h1>
+      <section class="card">
+        <p>このページが表示されていれば、GitHub Pages自体はHTMLを配信できています。</p>
+        <p>アプリ本体: <a href="./">./</a></p>
+        <p>確認日時: <span id="checked-at">JavaScript未実行</span></p>
+      </section>
+      <section class="card">
+        <h2>配信ファイル確認</h2>
+        <ul id="results">
+          <li>確認中...</li>
+        </ul>
+      </section>
+    </main>
+    <script>
+      const assets = ['./', './manifest.webmanifest', './sw.js', './icons/icon-192.svg'];
+      document.querySelector('#checked-at').textContent = new Date().toLocaleString('ja-JP');
+      Promise.all(assets.map(async (asset) => {
+        try {
+          const response = await fetch(asset, { cache: 'no-store' });
+          return { asset, ok: response.ok, status: response.status };
+        } catch (error) {
+          return { asset, ok: false, status: error.message };
+        }
+      })).then((results) => {
+        document.querySelector('#results').innerHTML = results.map((result) => (
+          `<li><code>${result.asset}</code> <span class="${result.ok ? 'ok' : 'ng'}">${result.ok ? 'OK' : 'NG'}</span> (${result.status})</li>`
+        )).join('');
+      });
+    </script>
+  </body>
+</html>
