@@ -4,6 +4,7 @@ await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await cp('index.html', 'dist/index.html');
 await cp('404.html', 'dist/404.html');
+await cp('pages-debug.html', 'dist/pages-debug.html');
 await cp('.nojekyll', 'dist/.nojekyll');
 await cp('src', 'dist/src', { recursive: true });
 await cp('manifest.webmanifest', 'dist/manifest.webmanifest');

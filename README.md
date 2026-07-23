@@ -47,6 +47,8 @@ npm run preview
 
 白い画面が残る場合は、スマホブラウザに古いService WorkerやCache Storageが残っている可能性があります。Chromeの場合は、対象サイトのサイトデータを削除してから再読み込みしてください。
 
+それでも白い画面のままの場合は、`https://a04sb025-ai.github.io/herasu-note/pages-debug.html` を開いてください。この確認ページが表示されない場合、アプリの問題ではなくGitHub Pagesのデプロイ設定またはPR未マージが原因です。この確認ページが表示される場合は、ページ内の配信ファイル確認結果を見て、manifest・Service Worker・アイコンが配信されているか確認できます。
+
 ### 代替：ブランチのrootを直接公開する
 
 1. GitHubの対象リポジトリで **Settings** → **Pages** を開きます。
