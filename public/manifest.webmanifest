@@ -1,0 +1,14 @@
+{
+  "name": "へらすノート",
+  "short_name": "へらすノート",
+  "description": "スマホ向け飲酒量記録アプリ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7fbf7",
+  "theme_color": "#1f8a70",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/icons/icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
