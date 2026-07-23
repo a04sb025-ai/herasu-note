@@ -1,5 +1,3 @@
-import './styles.css';
-
 const STORAGE_KEY = 'herasu-note-state-v1';
 const DRINKS = [
   { id: 'beer350', name: 'ビール350ml', pureAlcohol: 14, emoji: '🍺' },
@@ -188,6 +186,6 @@ function bindEvents() {
 }
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', { scope: './' }));
 }
 render();
